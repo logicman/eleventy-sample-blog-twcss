@@ -5,9 +5,13 @@
   "scripts": {
     "clean": "rm -rf _site",
     "start": "npm-run-all clean --parallel dev:*",
-    "dev:postcss": "postcss css/index.css -d _site/css/ --config ./postcss.config.js -w",
+    "dev:postcss": "postcss assets/index.css -d _site/css/ --config ./postcss.config.js -w",
     "dev:eleventy": "ELEVENTY_ENV=development npx @11ty/eleventy --watch --quiet",
     "dev:bsync": "browser-sync start --server ./_site -w --no-open --no-notify --no-ghost-mode",
+    "testProd:postcss": "postcss assets/index.css -d _site/css/ --config ./postcss.config.js -w",
+    "testProd:bsync": "browser-sync start --server ./_site -w --no-open --no-notify --no-ghost-mode",
+    "testProd:eleventy": "ELEVENTY_ENV=production npx @11ty/eleventy --output=./_site --watch",
+    "testbuild": "NODE_ENV=production npm-run-all clean --parallel testProd:*",
     "watch": "eleventy --watch",
     "serve": "eleventy --serve",
     "debug": "DEBUG=* eleventy",
@@ -45,6 +49,7 @@
     "postcss-preset-env": "^6.7.0"
   },
   "dependencies": {
+    "postcss-clean": "^1.1.0",
     "postcss-import": "^12.0.1",
     "tailwindcss": "^1.4.6"
   }

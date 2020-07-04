@@ -1,8 +1,26 @@
 module.exports = {
-  purge: [],
-  theme: {
-    extend: {},
+  purge: {
+    content: [
+      './**/*.js',
+      './**/*.11ty.js',
+      './**/*.html',
+      './**/*.njk',
+    ],
   },
-  variants: {},
+  theme: {
+    fontFamily: {
+      spacemono: ['Space Mono', 'sans-serif'],
+    },
+    extend: {
+      colors: {
+        'mainblue': '#00AAFF',
+        'cblue': '#539DC2',
+      },
+    },
+  },
+  variants: {
+    textColor: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+
+  },
   plugins: [],
 }
